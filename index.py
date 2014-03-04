@@ -22,8 +22,9 @@ from middleware.session import *
 @route('/', method='GET')
 @db_session
 def default():	
-	save_user()
-	#redirect('list')
+	# save_user()
+	# redirect('index.html')
+	return template('index', {})
 
 @route('/list', method='GET')
 @db_session
