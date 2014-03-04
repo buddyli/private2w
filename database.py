@@ -3,5 +3,5 @@
 
 from pony.orm import *
 
-db = Database('mysql', host='localhost', user='root', passwd='', db='mydb')
+db = Database('mysql', host='172.16.22.77', user='root', passwd='root', db='private2w')
 

@@ -5,6 +5,7 @@ from pony.orm import *
 from database import db
 
 class User(db.Entity):
+	#自定义表名
 	__table__ = 'my_users'
 
 	name = Required(unicode)
