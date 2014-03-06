@@ -34,8 +34,8 @@
 						% endif
 					</td>
 					<td>${item.addTime}</td>
-					<td><a href="#">修改</a></td>
-					<td><a href="#">删除</a></td>
+					<td><a href="/to_modify_item?id=${item.id}">修改</a></td>
+					<td><a href="/del_item?id=${item.id}">删除</a></td>
 				</tr>
 				% endfor
 			</table>
