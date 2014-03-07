@@ -10,6 +10,10 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" media="screen" type="text/css"
 	href="/static/css/active.css" />
+<script type="text/javascript" src="/static/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	$()
+</script>
 </head>
 <body>
 	<div class="box">
