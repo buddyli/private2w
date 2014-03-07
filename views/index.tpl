@@ -9,20 +9,23 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" media="screen" type="text/css"
-	href="/views/css/active.css" />
+	href="/static/css/active.css" />
 </head>
 <body>
 	<div class="box">
 		<h1>首页</h1>
 		<table>
 			<tr>
-				<td><a href="/views/item_add.html">添加条目</a></td>
+				<td><a href="/static/item_add.html">添加条目</a></td>
 			</tr>
 			<tr>
 				<td><a href="/list_item?start=0&size=10">条目列表</a></td>
 			</tr>
 			<tr>
-				<td><a href="/views/type_add.html">添加类型</a></td>
+				<td><a href="/static/type_add.html">添加类型</a></td>
+			</tr>
+			<tr>
+				<td><a href="/list_type?start=0&size=10">类型列表</a></td>
 			</tr>
 		</table>
 	</div>

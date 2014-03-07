@@ -2,7 +2,7 @@
 <html lang="zh-cn">
 <head>
 <meta charset="utf-8" />
-<title>添加类型</title>
+<title>类型列表</title>
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-touch-fullscreen" content="yes">
@@ -13,19 +13,25 @@
 </head>
 <body>
 	<div class="box">
-		<h1>添加类型</h1>
-		<form name="frm_add_type" id="frm_add_type" action="/add_type" method="post">
+		<h1>类型列表</h1>
+		<form name="frm_list_item" id="frm_list_item" action="list_type" method="post">
+		<div class="box">
 			<table>
 				<tr>
-					<td>名称：<input name="name" id="name">&nbsp;&nbsp;</td>
+					<th width="50%">名称</th>
+					<th width="30%">录入时间</th>
+					<th width="20%" colspan="2">操作</th>
 				</tr>
-<!-- 				<tr>
-					<td>索引：<input type="checkbox" name="indexed" id="indexed">&nbsp;&nbsp;</td>
-				</tr> -->
+				% for item in data:
 				<tr>
-					<td><input type="submit" value="提交"></td>
+					<td>${item.name}</td>
+					<td>${item.addTime}</td>
+					<td><a href="/to_modify_type?id=${item.id}">修改</a></td>
+					<td><a href="/del_type?id=${item.id}">删除</a></td>
 				</tr>
+				% endfor
 			</table>
+		</div>
 		</from>
 	</div>
 </body>

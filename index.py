@@ -11,6 +11,8 @@ sys.path.append(LIBS_PATH)
 from bottle import default_app, run
 from bottle import route, mako_template as template, redirect, request, response, get, post
 from bottle import static_file, view #为了不经过controller直接返回诸如html，css等静态文件引入
+from bottle import error
+
 from pony.orm import *
 from model.tables import *
 
@@ -18,15 +20,17 @@ from controller import * #导入所有的控制器
 from middleware.session import *
 #from setting import site_opt
 from datetime import datetime
-from db_oper import *
 
-from bottle import error
+# 自定义库
+from db_oper import *
+from type_oper import *
+
 @error(404)
 def error404(error):
     return 'Nothing here, sorry'
 
 #静态资源加载
-@route('/views/<filename:path>')
+@route('/static/<filename:path>')
 def send_html(filename):
 	html_path = os.path.join(BASE_PATH, 'views')
 	return static_file(filename, root = html_path)
@@ -95,17 +99,6 @@ def to_modify_item():
 	id = request.params.get('id')
 	item = Item[id]
 	return dict(data = item)
-
-def save_user():
-	# user = User(name="Tset 1",age = 30, sex = "F")
-	#user.save()
-	# studio = Studio(name = 'umessage',user = user)
-	#studio.commit()
-	pass
-
-def load_user():
-	# return User.select()[:2]
-	pass
 
 if __name__ == '__main__':
     run(host='localhost', port=8000, debug=True,reloader=True, app = app_middlware)
