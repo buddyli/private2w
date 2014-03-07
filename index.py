@@ -24,6 +24,8 @@ from datetime import datetime
 # 自定义库
 from db_oper import *
 from type_oper import *
+from item_oper import *
+from content_oper import *
 
 @error(404)
 def error404(error):
@@ -38,67 +40,7 @@ def send_html(filename):
 ##首页
 @route('/', method='GET')
 def default():	
-	# save_user()
-	# redirect('index.html')
 	return template('index', {})
-
-@post('/addItem', method = 'POST')
-@db_session
-def add_item():
-	#request.params可以同时获取到GET或者POST方法传入的参数
-	name = request.params.get('name')
-	#0：索引；1：非索引
-	indexed = request.params.get('indexed')
-	if indexed == None:
-		indexed = 1
-	else:
-		indexed = 0
-
-	print name, type(name), indexed
-	save_item(name, indexed)
-	return template('index', {})
-
-@route('/list_item')
-@db_session
-def list_item():
-	start = request.params.get('start') or '0'
-	size = request.params.get('size') or '10'
-	items = Item.select()[int(start):(int(start) + int(size))]
-	return template('item_list',data = items)
-
-@route('/del_item')
-@db_session
-def del_item():
-	id = request.params.get('id')
-	Item[id].delete()
-	commit() # 需要手动提交删除
-	redirect('/list_item')
-
-@route('/modify_item', method = 'POST')
-@db_session
-def modify_item():
-	id = request.params.get('id')
-	name = request.params.get('name')
-	#0：索引；1：非索引
-	indexed = request.params.get('indexed')
-	if indexed == None:
-		indexed = 1
-	else:
-		indexed = 0
-
-	print 'modify item=====%s, %s ,%s' % (id, name, indexed)
-	item = Item[id]
-	item.set(name = unicode(name, 'utf8'), indexed = int(indexed))
-	commit() # 需要手动提交删除
-	redirect('/list_item')
-
-@route('/to_modify_item')
-@db_session
-@view('item_modify')
-def to_modify_item():
-	id = request.params.get('id')
-	item = Item[id]
-	return dict(data = item)
 
 if __name__ == '__main__':
     run(host='localhost', port=8000, debug=True,reloader=True, app = app_middlware)
