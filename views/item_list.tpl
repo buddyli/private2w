@@ -12,7 +12,9 @@
 	href="/static/css/active.css" />
 <script type="text/javascript" src="/static/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
-	$()
+	$(function(){
+		
+	})
 </script>
 </head>
 <body>
