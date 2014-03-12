@@ -26,6 +26,9 @@ from db_oper import *
 from type_oper import *
 from item_oper import *
 from content_oper import *
+from type_oper2 import *
+
+bottle.debug(True)
 
 @error(404)
 def error404(error):

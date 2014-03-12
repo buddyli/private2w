@@ -25,9 +25,10 @@ class Item(db.Entity):
 class TypeItem(db.Entity):
 	_table_ = 'tbl_type_item'
 
+	id = PrimaryKey(int, auto = True, column = 'id')
 	typeId = Required(int, column = 'type_id')
 	itemId = Required(int, column = 'item_id')
-	PrimaryKey(typeId, itemId)
+	composite_key(typeId, itemId) # typeId and itemId are UNIQUE constraint
 
 class Content(db.Entity):
 	_table_ = 'tbl_content'

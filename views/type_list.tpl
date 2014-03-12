@@ -19,14 +19,16 @@
 		<div class="box">
 			<table>
 				<tr>
-					<th width="50%">名称</th>
+					<th width="40%">名称</th>
 					<th width="30%">录入时间</th>
+					<th width="10%">关联条目</th>
 					<th width="20%" colspan="2">操作</th>
 				</tr>
 				% for item in data:
 				<tr>
 					<td>${item.name}</td>
 					<td>${item.addTime}</td>
+					<td><a href="/to_add_type_item?id=${item.id}">关联条目</a></td>
 					<td><a href="/to_modify_type?id=${item.id}">修改</a></td>
 					<td><a href="/del_type?id=${item.id}">删除</a></td>
 				</tr>
