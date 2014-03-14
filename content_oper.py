@@ -65,3 +65,45 @@ def to_modify_item():
 	id = request.params.get('id')
 	item = Content[id]
 	return dict(data = item)
+
+# 跳转到添加内容，级联加载类型及其对应的条目
+@route('/to_add_content')
+@db_session
+@view('content_add')
+def to_add_content():
+	types = Type.select()
+	# items = Item.select()
+	# typeItems = TypeItem.select()
+
+	return dict(types = types)
+
+@route('/selectItems', method = 'POST')
+@db_session
+def selectItems():
+	# from json_encoder_decoder import MyEncoder, MyDecoder
+	import json
+	from MyEncoder import MyEncoder
+
+	typeId = request.params.get('typeId')
+	print typeId
+	sql = "select * from tbl_type_item where type_id = %s " % typeId
+	typeItems = TypeItem.select_by_sql(sql)
+
+	itemId = '('
+	size = 0
+	for tmp in typeItems:
+		size += 1
+		itemId += str(tmp.itemId)
+
+		if size != len(typeItems):
+			itemId += ','
+	itemId += ')'
+
+	items = Item.select_by_sql("select * from tbl_item where id in %s" % itemId)
+	itemList = []
+	for item in items:
+		print MyEncoder().default(item)
+		itemList.append(MyEncoder().default(item))
+
+	response.content_type = 'application/json'
+	return json.dumps(itemList)

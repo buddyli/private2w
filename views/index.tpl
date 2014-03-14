@@ -30,7 +30,7 @@
 			</tr>
 
 			<tr>
-				<td><a href="/static/content_add.html">添加内容</a></td>
+				<td><a href="/to_add_content">添加内容</a></td>
 			</tr>
 			<tr>
 				<td><a href="/list_content?start=0&size=10">内容列表</a></td>

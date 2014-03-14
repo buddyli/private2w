@@ -6,10 +6,7 @@ Created on 2014-03-03
 
 自定义的Object-JSON互相转换的工具类。因为json.dumps()方法支持的是字典，直接传入对象会报错，因此这里转换一下。
 '''
-# import Person
 import json
- 
-# p = Person.Person('Peter',22)
  
 class MyEncoder(json.JSONEncoder):
     def default(self,obj):
@@ -35,10 +32,3 @@ class MyDecoder(json.JSONDecoder):
         else:
             inst = d
         return inst
- 
- 
-# d = MyEncoder().encode(p)
-# o =  MyDecoder().decode(d)
-#  
-# print d
-# print type(o), o
