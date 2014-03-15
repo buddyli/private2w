@@ -13,15 +13,15 @@ def add_item():
 	#request.params可以同时获取到GET或者POST方法传入的参数
 	name = request.params.get('name')
 	indexed = request.params.get('indexed') or None
-
-	print name, indexed
+	itemValue = request.params.get('itemValues')
+	print "============== %s" % itemValue
 
 	if indexed == None:
 		indexed = '1'
 	else:
 		indexed = '0'
 
-	typeObj = Content(name = unicode(name, 'utf8'), addTime = datetime.now(), indexed = int(indexed), itemValue = '{}')
+	typeObj = Content(name = unicode(name, 'utf8'), addTime = datetime.now(), indexed = int(indexed), itemValue = unicode(itemValue, 'utf8'))
 	commit()
 	return template('index', {})
 
@@ -85,7 +85,7 @@ def selectItems():
 	from MyEncoder import MyEncoder
 
 	typeId = request.params.get('typeId')
-	print typeId
+	# print typeId
 	sql = "select * from tbl_type_item where type_id = %s " % typeId
 	typeItems = TypeItem.select_by_sql(sql)
 
@@ -102,7 +102,7 @@ def selectItems():
 	items = Item.select_by_sql("select * from tbl_item where id in %s" % itemId)
 	itemList = []
 	for item in items:
-		print MyEncoder().default(item)
+		# print MyEncoder().default(item)
 		itemList.append(MyEncoder().default(item))
 
 	response.content_type = 'application/json'

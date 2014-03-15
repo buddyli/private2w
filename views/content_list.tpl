@@ -19,9 +19,10 @@
 		<div class="box">
 			<table>
 				<tr>
-					<th width="40%">名称</th>
+					<th width="20%">名称</th>
 					<th width="10%">索引</th>
-					<th width="30%">录入时间</th>
+					<th width="10%">录入时间</th>
+					<th width="40%">ITEM值</th>
 					<th width="20%" colspan="2">操作</th>
 				</tr>
 				% for item in data:
@@ -35,6 +36,7 @@
 						% endif
 					</td>
 					<td>${item.addTime}</td>
+					<td>${item.itemValue}</td>
 					<td><a href="/to_modify_content?id=${item.id}">修改</a></td>
 					<td><a href="/del_content?id=${item.id}">删除</a></td>
 				</tr>
