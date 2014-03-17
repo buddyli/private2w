@@ -10,14 +10,14 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" media="screen" type="text/css"
 	href="/static/css/active.css" />
-<script type="text/javascript" src="/static/js/json2s.js"></script>
+<script type="text/javascript" src="/static/js/json2.js"></script>
 <script type="text/javascript" src="/static/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
 function changeItem(id){
 	$.post('selectItems', {'typeId': id}, function(json){
 		$('#cascade_items').html('');
 		for(var i=0; i<json.length; i++){
-			var p = "<div><p name="+json[i][1]+">"+json[i][1]+":<input type='text' name='item_"+json[i][0]+" id='item_"+json[i][0]+"'/>";
+			var p = "<div><p name="+json[i][3]+">"+json[i][1]+":<input type='text' name='item_"+json[i][0]+" id='item_"+json[i][0]+"'/>";
 			if (json[i][2] == 1)
 				 p += "索引:<input type='checkbox' name='item_indexed_'"+json[i][0]+"' id='item_indexed_'"+json[i][0]+"/>";
 			else

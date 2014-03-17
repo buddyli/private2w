@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 #-*- encoding:utf-8 -*-
 
+from datetime import datetime
+
 from bottle import route, mako_template as template, redirect, request, response, get, post
 from bottle import static_file, view #为了不经过controller直接返回诸如html，css等静态文件引入
 
@@ -10,6 +12,8 @@ from model.tables import *
 @post('/add_item', method = 'POST')
 @db_session
 def add_item():
+	DATE_FORMAT = '%Y%m%d%H%M%S'
+	innerName = 'attr_%s' % datetime.now().strftime(DATE_FORMAT)
 	#request.params可以同时获取到GET或者POST方法传入的参数
 	name = request.params.get('name')
 	#0：索引；1：非索引
@@ -20,7 +24,7 @@ def add_item():
 		indexed = 0
 
 	dt = datetime.now()
-	item = Item(name = unicode(name, 'utf8'), indexed = int(indexed), addTime = dt)
+	item = Item(name = unicode(name, 'utf8'), indexed = int(indexed), addTime = dt, innerName = innerName)
 	commit()
 	return template('index', {})
 
