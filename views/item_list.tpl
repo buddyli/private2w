@@ -33,7 +33,7 @@
 				<tr>
 					<td>${item.name}</td>
 					<td>
-						% if item.indexed == 0:
+						% if item.indexed == '0':
 						已索引
 						% else:
 						未索引

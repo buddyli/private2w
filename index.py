@@ -13,10 +13,9 @@ from bottle import route, mako_template as template, redirect, request, response
 from bottle import static_file, view #为了不经过controller直接返回诸如html，css等静态文件引入
 from bottle import error
 
-from pony.orm import *
-from model.tables import *
+# from pony.orm import *
+# from model.tables import *
 
-from controller import * #导入所有的控制器
 from middleware.session import *
 #from setting import site_opt
 from datetime import datetime
