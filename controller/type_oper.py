@@ -6,6 +6,9 @@ from bottle import static_file, view #为了不经过controller直接返回诸�
 
 # from pony.orm import *
 # from model.tables import *
+from model.documents import *
+
+DATE_FORMAT = '%Y-%m-%d %H:%M:%S' # 入库格式化时间
 
 @post('/add_type', method = 'POST')
 # @db_session
