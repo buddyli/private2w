@@ -6,6 +6,7 @@ from bottle import static_file, view #为了不经过controller直接返回诸�
 
 # from pony.orm import *
 # from model.tables import *
+from model.documents import *
 
 @post('/add_content', method = 'POST')
 # @db_session
