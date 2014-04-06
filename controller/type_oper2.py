@@ -6,6 +6,7 @@ from bottle import static_file, view #为了不经过controller直接返回诸�
 
 # from pony.orm import *
 # from model.tables import *
+from model.documents import *
 
 @route('/to_add_type_item')
 # @db_session
@@ -21,16 +22,30 @@ def add_type_item():
 	# items = Item.select()
 
 	# return dict(data = typeObj, items = items, selectedItems = typeItems)
-	return None
+
+	typeObj = Type.objects(id=typeId)[0]
+	items = Item.objects();
+
+	return dict(data = typeObj, items = items)
 
 
 @route('/add_type_item', method = "POST")
 # @db_session
 @view('index')
 def add_type_item():
-	# id = request.params.get('id')
-	# # 新的关联条目ID
-	# selectedItems = request.params.getall('items')
+	id = request.params.get('id')
+	# 新的关联条目ID
+	selectedItems = request.params.getall('items')
+	itemList = []
+
+	if selectedItems==None or len(selectedItems)==0:#如果取消了关联，将item清空
+		pass
+	else:#更新关联关系
+		for itemId in selectedItems:
+			itemList.append(itemId)
+
+	print itemList
+	Type.objects(id=id).update(set__items=itemList)
 	# # 关联表中已经存在的所有条目
 	# itemsInDB = TypeItem.select()
 
@@ -55,4 +70,5 @@ def add_type_item():
 	# 		print '依次保存类型-条目对应关系异常: %s' % e
 
 	# commit()
-	return {}
+	# return {}
+	redirect('/list_type')

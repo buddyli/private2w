@@ -27,7 +27,7 @@
 				% for item in data:
 				<tr>
 					<td>${item.name}</td>
-					<td>${item.addTime}</td>
+					<td>${item.addTimeStr}</td>
 					<td><a href="/to_add_type_item?id=${item.id}">关联条目</a></td>
 					<td><a href="/to_modify_type?id=${item.id}">修改</a></td>
 					<td><a href="/del_type?id=${item.id}">删除</a></td>

@@ -16,7 +16,8 @@ def add_item():
 	#request.params可以同时获取到GET或者POST方法传入的参数
 	name = request.params.get('name')
 
-	# typeObj = Type(name = unicode(name, 'utf8'), addTime = datetime.now())
+	typeObj = Type(name = unicode(name, 'utf8'), addTime = datetime.now())
+	typeObj.save()
 	# commit()
 	return template('index', {})
 
@@ -27,7 +28,8 @@ def list_item():
 	size = request.params.get('size') or '10'
 	# items = Type.select()[int(start):(int(start) + int(size))]
 	# return template('type_list',data = items)
-	return None
+	types = Type.objects[int(start):(int(start) + int(size))]
+	return template('type_list',data = types)
 
 @route('/del_type')
 # @db_session
@@ -35,6 +37,7 @@ def del_item():
 	id = request.params.get('id')
 	# Type[id].delete()
 	# commit() # 需要手动提交删除
+	Type.objects(id=id).delete()
 	redirect('/list_type')
 
 @route('/modify_type', method = 'POST')
@@ -46,6 +49,7 @@ def modify_item():
 	# item = Type[id]
 	# item.set(name = unicode(name, 'utf8'))
 	# commit() # 需要手动提交删除
+	Type.objects(id=id).update(set__name=unicode(name, 'utf8'))
 	redirect('/list_type')
 
 @route('/to_modify_type')
@@ -55,4 +59,5 @@ def to_modify_item():
 	id = request.params.get('id')
 	# item = Type[id]
 	# return dict(data = item)
-	return None
+	item = Type.objects(id=id)[0]
+	return dict(data = item)

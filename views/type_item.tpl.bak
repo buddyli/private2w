@@ -29,8 +29,8 @@
 						条目：
 						% for item in items:
 						% 	flag = False
-						% 	for p in data.items:
-						%		if p.id == item.id:
+						% 	for p in selectedItems:
+						%		if p.itemId == item.id:
 						%			flag = True
 						%			break;
 						%		end
