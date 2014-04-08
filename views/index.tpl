@@ -19,21 +19,21 @@
 				<td><a href="/static/item_add.html">添加条目</a></td>
 			</tr>
 			<tr>
-				<td><a href="/list_item?start=0&size=10">条目列表</a></td>
+				<td><a href="/list_item?start=0&size=1000">条目列表</a></td>
 			</tr>
 			
 			<tr>
 				<td><a href="/static/type_add.html">添加类型</a></td>
 			</tr>
 			<tr>
-				<td><a href="/list_type?start=0&size=10">类型列表</a></td>
+				<td><a href="/list_type?start=0&size=1000">类型列表</a></td>
 			</tr>
 
 			<tr>
 				<td><a href="/to_add_content">添加内容</a></td>
 			</tr>
 			<tr>
-				<td><a href="/list_content?start=0&size=10">内容列表</a></td>
+				<td><a href="/list_content?start=0&size=1000">内容列表</a></td>
 			</tr>
 		</table>
 	</div>

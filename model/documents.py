@@ -28,7 +28,7 @@ class Type(Document):
 class Content(Document):
 	id = ObjectIdField()
 	name = StringField(max_length=200, required=True)
-	typeId = LongField(required=True)
+	# typeId = LongField(required=True)
 	addTime = DateTimeField(default=datetime.now())
 	addTimeStr = StringField(default=datetime.now().strftime(DATE_FORMAT))
 	indexed = StringField(max_length=1, required=True, default='1')

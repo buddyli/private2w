@@ -25,11 +25,11 @@
 				</tr>
 				<tr>
 					<td>索引：
-						% if data.indexed == 0:
+						% if data.indexed == '0':
 							<input type="checkbox" name="indexed" id="indexed" checked="checked">
 						% end
 
-						% if data.indexed == 1:
+						% if data.indexed == '1':
 							<input type="checkbox" name="indexed" id="indexed">
 						% end
 					</td>

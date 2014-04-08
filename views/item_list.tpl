@@ -39,7 +39,7 @@
 						未索引
 						% endif
 					</td>
-					<td>${item.addTime}</td>
+					<td>${item.addTimeStr}</td>
 					<td><a href="/to_modify_item?id=${item.id}">修改</a></td>
 					<td><a href="/del_item?id=${item.id}">删除</a></td>
 				</tr>

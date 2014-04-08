@@ -39,7 +39,7 @@ def add_item():
 # @db_session
 def list_item():
 	start = request.params.get('start') or '0'
-	size = request.params.get('size') or '10'
+	size = request.params.get('size') or '1000'
 	# items = Item.select()[int(start):(int(start) + int(size))]
 	# return template('item_list',data = items)
 	items = Item.objects[int(start):(int(start) + int(size))]

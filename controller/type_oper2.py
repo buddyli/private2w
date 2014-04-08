@@ -44,7 +44,6 @@ def add_type_item():
 		for itemId in selectedItems:
 			itemList.append(itemId)
 
-	print itemList
 	Type.objects(id=id).update(set__items=itemList)
 	# # 关联表中已经存在的所有条目
 	# itemsInDB = TypeItem.select()

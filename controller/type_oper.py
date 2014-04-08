@@ -25,7 +25,7 @@ def add_item():
 # @db_session
 def list_item():
 	start = request.params.get('start') or '0'
-	size = request.params.get('size') or '10'
+	size = request.params.get('size') or '1000'
 	# items = Type.select()[int(start):(int(start) + int(size))]
 	# return template('type_list',data = items)
 	types = Type.objects[int(start):(int(start) + int(size))]

@@ -29,13 +29,13 @@
 				<tr>
 					<td>${item.name}</td>
 					<td>
-						% if item.indexed == 0:
+						% if item.indexed == '0':
 						已索引
 						% else:
 						未索引
 						% endif
 					</td>
-					<td>${item.addTime}</td>
+					<td>${item.addTimeStr}</td>
 					<td>${item.itemValue}</td>
 					<td><a href="/to_modify_content?id=${item.id}">修改</a></td>
 					<td><a href="/del_content?id=${item.id}">删除</a></td>
