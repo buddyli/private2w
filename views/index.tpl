@@ -16,7 +16,7 @@
 		<h1>首页</h1>
 		<table>
 			<tr>
-				<td><a href="/static/item_add.html">添加条目</a></td>
+				<td><a href="${site_opt['static_url']}/static/item_add.html">添加条目</a></td>
 			</tr>
 			<tr>
 				<td><a href="/list_item?start=0&size=1000">条目列表</a></td>

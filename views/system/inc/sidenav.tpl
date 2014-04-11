@@ -1,17 +1,25 @@
 
-<div class="navhead_blank"><span><a href="/system/dashboard" title="main">Dashboard</a></span></div>                      
-<div class="navhead"><span>Uri Area</span><span class="navbullet"></span></div><!-- Sidenav Headline -->
+<div class="navhead_blank"><span><a href="/" title="main">首页</a></span></div>                      
+<div class="navhead"><span>条目</span><span class="navbullet"></span></div><!-- Sidenav Headline -->
 <div class="subnav"><!-- Sidenav Box -->
     <ul class="submenu">
-        <li><a href="/system/uri/add" title="">Add Uri</a></li>
-        <li><a href="/system/uri/list" title="">List Uri</a></li>
+        <li><a href="/static/item_add.html" title="">添加条目</a></li>
+        <li><a href="/list_item?start=0&size=1000" title="">条目列表</a></li>
     </ul>
 </div><!-- /Sidenav Box -->
                         
-<div class="navhead"><span>Manager Area</span><span class="navbullet"></span></div>
+<div class="navhead"><span>类型</span><span class="navbullet"></span></div>
 <div class="subnav">
     <ul class="submenu">
-        <li><a href="/system/manager/add" title="">Add Manager</a></li>
-        <li><a href="/system/manager/list" title="">List Manager</a></li>
+        <li><a href="/static/type_add.html" title="">添加类型</a></li>
+        <li><a href="/list_type?start=0&size=1000" title="">类型列表</a></li>
+    </ul>
+</div><!-- /Sidenav Box -->
+
+<div class="navhead"><span>内容</span><span class="navbullet"></span></div>
+<div class="subnav">
+    <ul class="submenu">
+        <li><a href="/to_add_content" title="">添加内容</a></li>
+        <li><a href="/list_content?start=0&size=1000" title="">内容列表</a></li>
     </ul>
 </div><!-- /Sidenav Box -->

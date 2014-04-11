@@ -44,7 +44,8 @@ def send_html(filename):
 ##首页
 @route('/', method='GET')
 def default():	
-	return template('index', {})
+	# return template('index', {})
+	return template('views/system/main', site_opt = site_opt)
 
 if __name__ == '__main__':
     run(host='localhost', port=8000, debug=True,reloader=True, app = app_middlware)
