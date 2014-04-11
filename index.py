@@ -19,13 +19,15 @@ from bottle import error
 from middleware.session import *
 #from setting import site_opt
 from datetime import datetime
+from setting import *
 
 # 自定义库
-from controller.db_oper import *
-from controller.type_oper import *
-from controller.item_oper import *
-from controller.content_oper import *
-from controller.type_oper2 import *
+import controller
+# from controller.db_oper import *
+# from controller.type_oper import *
+# from controller.item_oper import *
+# from controller.content_oper import *
+# from controller.type_oper2 import *
 
 bottle.debug(True)
 
