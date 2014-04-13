@@ -6,14 +6,16 @@ from datetime import datetime
 from bottle import route, mako_template as template, redirect, request, response, get, post
 from bottle import static_file, view #为了不经过controller直接返回诸如html，css等静态文件引入
 
-# from pony.orm import *
-# from model.tables import *
-# from database import *
 from model.documents import *
+from setting import *
 
 DATE_FORMAT = '%Y-%m-%d %H:%M:%S' # 入库格式化时间
 
-@post('/add_item', method = 'POST')
+@route('/to_add_item')
+def to_add_item():
+	return template('views/system/item/add', site_opt = site_opt)
+
+@route('/add_item', method = 'POST')
 # @db_session
 def add_item():
 	DATE_FORMAT = '%Y%m%d%H%M%S'
@@ -27,29 +29,25 @@ def add_item():
 	else:
 		indexed = 0
 
-	# dt = datetime.now()
-	# dtStr = datetime.now().strftime(DATE_FORMAT)
 	item = Item(name=unicode(name, 'utf8'), indexed=str(indexed), innerName=innerName)
 	item.save()
-	# item = Item(name = unicode(name, 'utf8'), indexed = int(indexed), addTime = dt, innerName = innerName)
-	# commit()
-	return template('index', {})
+	redirect('list_item')
 
 @route('/list_item')
 # @db_session
 def list_item():
 	start = request.params.get('start') or '0'
 	size = request.params.get('size') or '1000'
-	# items = Item.select()[int(start):(int(start) + int(size))]
-	# return template('item_list',data = items)
 	items = Item.objects[int(start):(int(start) + int(size))]
-	return template('item_list',data = items)
+	data = {
+		'items': items
+	}
+	return template('views/system/item/list', data = data, site_opt = site_opt)
 
 @route('/del_item')
 # @db_session
 def del_item():
 	id = request.params.get('id')
-	# Item[id].delete()
 	# commit() # 需要手动提交删除
 	Item.objects(id=id).delete()
 	redirect('/list_item')
@@ -67,18 +65,16 @@ def modify_item():
 		indexed = 0
 
 	print 'modify item=====%s, %s ,%s' % (id, name, str(indexed))
-	# item = Item[id]
-	# item.set(name = unicode(name, 'utf8'), indexed = int(indexed))
-	# commit() # 需要手动提交删除
 	Item.objects(id=id).update(set__name = unicode(name, 'utf8'), set__indexed = str(indexed))
 	redirect('/list_item')
 
 @route('/to_modify_item')
-# @db_session
-@view('item_modify')
+# @view('views/system/item/edit')
 def to_modify_item():
 	id = request.params.get('id')
-	# item = Item[id]
-	# return dict(data = item)
 	item = Item.objects(id = id)[0]
-	return dict(data = item)
+	data = {
+		'item': item
+	}
+	# return dict(data = data, site_opt = site_opt)
+	return template('views/system/item/edit', data = data, site_opt = site_opt)

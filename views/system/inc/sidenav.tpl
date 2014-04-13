@@ -3,7 +3,7 @@
 <div class="navhead"><span>条目</span><span class="navbullet"></span></div><!-- Sidenav Headline -->
 <div class="subnav"><!-- Sidenav Box -->
     <ul class="submenu">
-        <li><a href="/static/item_add.html" title="">添加条目</a></li>
+        <li><a href="/to_add_item" title="">添加条目</a></li>
         <li><a href="/list_item?start=0&size=1000" title="">条目列表</a></li>
     </ul>
 </div><!-- /Sidenav Box -->
@@ -11,7 +11,7 @@
 <div class="navhead"><span>类型</span><span class="navbullet"></span></div>
 <div class="subnav">
     <ul class="submenu">
-        <li><a href="/static/type_add.html" title="">添加类型</a></li>
+        <li><a href="/to_add_type" title="">添加类型</a></li>
         <li><a href="/list_type?start=0&size=1000" title="">类型列表</a></li>
     </ul>
 </div><!-- /Sidenav Box -->

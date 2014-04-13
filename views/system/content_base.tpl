@@ -27,6 +27,73 @@
     <script src="${site_opt['static_url']}/static/m/js/functions.js" type="text/javascript"></script>
 </%block>
 
+<%block name="local_js">
+    <!-- Loading local javascript-->
+    <script type="text/javascript" src="${site_opt['static_url']}/static/m/js/json2.js"></script>
+    <script type="text/javascript">
+    function changeItem(id){
+        $.post('selectItems', {'typeId': id}, function(json){
+            $('#cascade_items').html('');
+            for(var i=0; i<json.length; i++){
+                var p = "<div><label for='a' name='"+json[i][0]+"' innerName='"+json[i][2]+"'>"+json[i][0]+"</label><input class='mediumfield' type='text' name='item_"+json[i][0]+" id='item_"+json[i][0]+"'/>";
+                if (json[i][1] == '1')
+                     p += "索引:<input type='checkbox' name='item_indexed_'"+json[i][0]+"' id='item_indexed_'"+json[i][0]+"/>";
+                else
+                    p += "索引:<input type='checkbox' name='item_indexed_'"+json[i][0]+"' id='item_indexed_'"+json[i][0]+" checked='checked'/>";
+                p += "</p></div>";
+                $('#cascade_items').append(p);
+            }
+        }, 'json');
+    }
+
+    function Item(attrName, attrValue, indexed){
+        this.attrName = attrName;
+        this.attrValue = attrValue;
+        this.indexed = indexed;
+    }
+
+    // 字符串转换成json数据
+    function strToJson(str){
+        return eval('(' + str + ')')
+    }
+
+    $(function(){
+        $("#types").change(function(){
+            typeId = $(this).val();
+            if (typeId == -1){
+
+            }else{
+                changeItem(typeId);
+            }
+        });
+
+        $('#frm_add_content').submit(function(){
+            var val = '[';
+            var tmp = $("div#cascade_items div");
+            var array = new Array();
+
+            for(var i=0; i<tmp.length; i++){
+                var input = $("input[name^='item_']", tmp[i]).val();
+                var name = $("label", tmp[i]).attr('name');
+                var innerName = $("label", tmp[i]).attr('innerName');
+                var indexed = $("input[name^='item_indexed_']", tmp[i]).attr('checked');
+
+                var indexedStr = '0';
+                if (!indexed){//没有选中时，再将状态置为未选中
+                    indexedStr = '1';
+                }
+
+                var obj = strToJson('{'+name+':\''+input+'\',indexed:\''+indexedStr+'\','+innerName+':\''+input+'\'}');
+                array[i] = obj
+            }
+
+            $("#itemValues").val(JSON.stringify(array));
+        })
+    })
+    </script>
+
+</%block>
+
 </head>
 <body>
 
