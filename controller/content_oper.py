@@ -13,7 +13,6 @@ def add_item():
 	name = request.params.get('name')
 	indexed = request.params.get('indexed') or None
 	itemValue = request.params.get('itemValues')
-	print itemValue
 
 	if indexed == None:
 		indexed = '1'
@@ -85,9 +84,8 @@ def selectItems():
 		items.append(Item.objects(id=item.id)[0])
 
 	for tmpItem in items:
-		print type(tmpItem), tmpItem.name, tmpItem.id
 		itemList.append(MyEncoder().default(tmpItem))
 
 	response.content_type = 'application/json'
+	print json.dumps(itemList)
 	return json.dumps(itemList)
-	return None

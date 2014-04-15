@@ -35,7 +35,7 @@
         $.post('selectItems', {'typeId': id}, function(json){
             $('#cascade_items').html('');
             for(var i=0; i<json.length; i++){
-                var p = "<div><label for='a' name='"+json[i][0]+"' innerName='"+json[i][2]+"'>"+json[i][0]+"</label><input class='mediumfield' type='text' name='item_"+json[i][0]+" id='item_"+json[i][0]+"'/>";
+                var p = "<div><label for='a' id='"+json[i][3]+"' name='"+json[i][0]+"' innerName='"+json[i][2]+"'>"+json[i][0]+"</label><input class='mediumfield' type='text' name='item_"+json[i][0]+" id='item_"+json[i][0]+"'/>";
                 if (json[i][1] == '1')
                      p += "索引:<input type='checkbox' name='item_indexed_'"+json[i][0]+"' id='item_indexed_'"+json[i][0]+"/>";
                 else
@@ -74,6 +74,7 @@
 
             for(var i=0; i<tmp.length; i++){
                 var input = $("input[name^='item_']", tmp[i]).val();
+                var id = $("label", tmp[i]).attr('id');
                 var name = $("label", tmp[i]).attr('name');
                 var innerName = $("label", tmp[i]).attr('innerName');
                 var indexed = $("input[name^='item_indexed_']", tmp[i]).attr('checked');
@@ -83,8 +84,8 @@
                     indexedStr = '1';
                 }
 
-                var obj = strToJson('{'+name+':\''+input+'\',indexed:\''+indexedStr+'\','+innerName+':\''+input+'\'}');
-                array[i] = obj
+                var obj = strToJson('{'+name+':\''+input+'\',indexed:\''+indexedStr+'\','+innerName+':\''+input+'\',id:\''+id+'\'}');
+                array[i] = obj;
             }
 
             $("#itemValues").val(JSON.stringify(array));
