@@ -84,10 +84,11 @@
                     indexedStr = '1';
                 }
 
-                var obj = strToJson('{'+name+':\''+input+'\',indexed:\''+indexedStr+'\','+innerName+':\''+input+'\',id:\''+id+'\'}');
+                alert(id);
+                var obj = strToJson('{\''+id+'\':\''+input+'\',indexed:\''+indexedStr+'\'}');
                 array[i] = obj;
             }
-
+            alert(JSON.stringify(array));
             $("#itemValues").val(JSON.stringify(array));
         })
     })

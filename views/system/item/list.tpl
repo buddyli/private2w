@@ -11,7 +11,7 @@
                     <th>名称</th>
                     <th>索引</th>
                     <th>录入时间</th>
-                    <th colspan='2'>操作</th>
+                    <th>操作</th>
                 </tr>
             </thead>
                 
@@ -27,9 +27,9 @@
                         <td>
                             <a class="edit" href="/to_modify_item?id=${item.id}">修改</a>
                         </td>
-                        <td>
+                        <!--<td>
                             <a class="delete" href="/del_item?id=${item.id}" onclick="javascript:return confirm('Yes or No?')">删除</a>
-                        </td>
+                        </td>-->
                     </tr>
                     % endfor
                 %endif
