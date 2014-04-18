@@ -1,1 +1,0 @@
- mongod --dbpath /home/licb/mongodb_data/
