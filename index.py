@@ -29,7 +29,7 @@ def error404(error):
 #静态资源加载
 @route('/static/<filename:path>')
 def send_html(filename):
-	html_path = os.path.join(BASE_PATH, 'views')
+	html_path = os.path.join(BASE_PATH, 'static')
 	return static_file(filename, root = html_path)
 
 ##首页

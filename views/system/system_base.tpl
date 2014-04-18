@@ -23,7 +23,6 @@
 <%block name="global_js">
     <!-- Loading javascript -->
     <script src="${site_opt['static_url']}/static/m/js/jquery.js" type="text/javascript"></script>
-    <script src="${site_opt['static_url']}/static/m/js/jquery-ui.js" type="text/javascript"></script>
     <script src="${site_opt['static_url']}/static/m/js/functions.js" type="text/javascript"></script>
 </%block>
 

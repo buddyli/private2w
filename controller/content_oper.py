@@ -73,7 +73,7 @@ def to_add_content():
 @route('/selectItems', method = 'POST')
 def selectItems():
 	import json
-	from MyEncoder import MyEncoder
+	from libs.MyEncoder import MyEncoder
 
 	typeId = request.params.get('typeId')
 
