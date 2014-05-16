@@ -33,3 +33,11 @@ class Content(Document):
 	addTimeStr = StringField(default=datetime.now().strftime(DATE_FORMAT))
 	indexed = StringField(max_length=1, required=True, default='1')
 	itemValue = StringField(max_length=500)
+
+# 类型文档。一个类型可以关联若干个条目
+class Pic(Document):
+	id = ObjectIdField()
+	name = StringField(max_length=200, required=True)
+	path = StringField(max_length=200, required=False)
+	addTime = DateTimeField(default=datetime.now())
+	addTimeStr = StringField(default=datetime.now().strftime(DATE_FORMAT))

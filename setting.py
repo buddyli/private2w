@@ -6,5 +6,6 @@ session_path = "./"
 ##站点的配置
 site_opt = {
     'site_url': '',
-    'static_url' : ''  # 相对目录
+    'static_url' : '',
+    'pic_dir' : '/tmp/pic'
 }

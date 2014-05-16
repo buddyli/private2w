@@ -23,3 +23,11 @@
         <li><a href="/list_content?start=0&size=1000" title="">内容列表</a></li>
     </ul>
 </div><!-- /Sidenav Box -->
+
+<div class="navhead"><span>图片</span><span class="navbullet"></span></div>
+<div class="subnav">
+    <ul class="submenu">
+        <li><a href="/to_add_pic" title="">添加图片</a></li>
+        <li><a href="/list_pic?start=0&size=1000" title="">图片列表</a></li>
+    </ul>
+</div><!-- /Sidenav Box -->
