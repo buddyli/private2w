@@ -19,16 +19,19 @@ def to_add_item():
 
 @route('/add_pic', method = 'POST')
 def add_item():
-	name = request.forms.get('name')
+	describe = request.forms.get('describe')
 	upload = request.files.get('file')
 	name, ext = os.path.splitext(upload.filename)
 	
 	save_path = site_opt['pic_dir']
 	print name, ext, save_path
-	upload.save(save_path)
+	try:
+		upload.save(save_path)
+		item = Pic(path=os.path.join(save_path, '%s%s' % (name, ext)), describe=describe)
+		item.save()
+	except IOError, e:
+		print 'duplicate upload the save file [%s]' % name
 
-	# item = Pic(name=unicode(name, 'utf8'))
-	# item.save()
 	redirect('list_pic')
 
 @route('/list_pic')

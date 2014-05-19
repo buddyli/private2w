@@ -86,6 +86,14 @@
                 var obj = strToJson('{\''+id+'\':\''+input+'\',indexed:\''+indexedStr+'\'}');
                 array[i] = obj;
             }
+
+            var pic = $('#pic').val()
+            if(pic){
+                alert(pic);
+                var picJson = strToJson('{\'pic\':\''+pic+'\'}');
+                array[array.length] = picJson;
+            }
+            alert(array);
             $("#itemValues").val(JSON.stringify(array));
         })
     })

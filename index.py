@@ -39,6 +39,6 @@ def default():
 	return template('views/system/main', site_opt = site_opt)
 
 if __name__ == '__main__':
-    run(host='localhost', port=8000, debug=True,reloader=True, app = app_middlware)
+    run(host='localhost', port=8000, debug=True, reloader=True, app=app_middlware)
 else:
     application = app_middlware

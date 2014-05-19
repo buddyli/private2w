@@ -21,10 +21,22 @@
                 </div>
 
                 <div class="input_field">
+                    <label for="b">图片</label>
+                    <select name="pic" id="pic">
+                        <option value="-1">选择类型</option>
+                        <% pics = data['pics'] if 'pics' in data else [] %>
+                        % for pic in pics:
+                            <option value="${pic.path}">${pic.path}</option>
+                        % endfor
+                    </select>
+                    <span class="field_desc"> Optional</span>
+                </div>
+
+                <div class="input_field">
                     <label for="a">类型</label>
                     <select name="types" id="types">
                         <option value="-1">选择类型</option>
-                        <% types  = data if data else None %>
+                        <% types = data['types'] if 'types' in data else [] %>
                         % for type in types:
                             <option value="${type.id}">${type.name}</option>
                         % endfor

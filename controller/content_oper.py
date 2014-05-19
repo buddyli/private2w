@@ -12,6 +12,7 @@ def add_item():
 	#request.params可以同时获取到GET或者POST方法传入的参数
 	name = request.params.get('name')
 	indexed = request.params.get('indexed') or None
+	#json格式的内容
 	itemValue = request.params.get('itemValues')
 
 	if indexed == None:
@@ -68,7 +69,12 @@ def to_modify_item():
 @route('/to_add_content')
 def to_add_content():
 	types = Type.objects()
-	return template('views/system/content/add',data = types, site_opt = site_opt)
+	pics = Pic.objects()
+	data = {
+		'types': types,
+		'pics': pics
+	}
+	return template('views/system/content/add',data = data, site_opt = site_opt)
 
 @route('/selectItems', method = 'POST')
 def selectItems():

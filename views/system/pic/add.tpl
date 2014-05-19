@@ -12,8 +12,8 @@
                     <span class="field_desc"> * Required</span>
                 </div>
                 <div class="input_field">
-                    <label for="b">名称</label>
-                    <input type="text" name="name" id="name">
+                    <label for="b">描述</label>
+                    <input type="text" name="describe" id="describe">
                     <span class="field_desc"> Optional</span>
                 </div>           
                 <input class="submit" type="submit" value="提交" />

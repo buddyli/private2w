@@ -8,14 +8,31 @@
         <table cellspacing="0" cellpadding="0"><!-- Table -->
             <thead>
                 <tr>
-                    <th>名称</th>
-                    <th>索引</th>
+                    <th>路径</th>
+                    <th>描述</th>
                     <th>录入时间</th>
-                    <th>操作</th>
                 </tr>
             </thead>
                 
             <tbody>
+                %if data and 'items' in data:
+                    % for item in data['items']:
+                    <tr>
+                        <td>
+                           ${item['path'] if 'path' in item else '--'}
+                        </td>
+                        <td>${item['describe'] if 'describe' in item else '--'}</td>
+                        <td>${item['addTimeStr'] if 'addTimeStr' in item else '--'}</td>
+                       <!--<td>
+                            <a class="edit" href="/to_modify_item?id=${item.id}">修改</a>
+                        </td>
+                        <td>
+                            <a class="delete" href="/del_pic?id=${item.id}" onclick="javascript:return confirm('Yes or No?')">删除</a>
+                        </td>-->
+                    </tr>
+                    % endfor
+                %endif
+
             </tbody>
         </table><!-- END Table -->
         <div class="box">
